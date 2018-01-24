@@ -18,16 +18,16 @@ public class Sorts{
    *
    * @param  list  reference to an array of integers to be sorted
    */
-  public void bubbleSort(ArrayList <Comparable> list){
+  public void bubbleSort(ArrayList <Integer> list){
     //replace these lines with your code
     int length = list.size();
     int temp = 0;
     for(int i = 0; i < length; i++){
-        for(int j = 1; j < (length - 1); j++){
-            if((Integer)list.get(j - 1) > (Integer)list.get(j)){
-                temp = (Integer)list.get(j - 1);
-                list.set(list.indexOf(j-1), (Integer)list.get(j));
-                list.set(list.indexOf(j), temp);
+        for(int j = 0; j < (length - i - 1); j++){
+            if((Integer)list.get(j) > list.get(j + 1)){
+                temp = list.get(j);
+                list.set(j, list.get(j+1));
+                list.set(j+1, temp);
                }
            }
        }
@@ -41,7 +41,7 @@ public class Sorts{
    *
    * @param  list  reference to an array of integers to be sorted
    */
-  public void selectionSort(ArrayList <Comparable> list){
+  public void selectionSort(ArrayList <Integer> list){
     //replace these lines with your code
     int length = list.size();
     int temp = 0;
@@ -53,8 +53,8 @@ public class Sorts{
             }
         }
         int smallerNumber = (Integer)list.get(index);
-        list.set(list.indexOf(index), list.get(i));
-        list.set(list.indexOf(i), smallerNumber);
+        list.set(index, list.get(i));
+        list.set(i, smallerNumber);
     }
 
     System.out.println();
@@ -67,8 +67,18 @@ public class Sorts{
    *
    * @param  list  reference to an array of integers to be sorted
    */
-  public void insertionSort(ArrayList <Comparable> list){
+  public void insertionSort(ArrayList <Integer> list){
     //replace these lines with your code
+    int length = list.size();
+    for(int i = 1; i < length; i++){
+        int temp = (Integer)list.get(i);
+        int j = i - 1; 
+        while(j>=0 && (Integer)list.get(j) > temp){
+            list.set(j + 1, list.get(j));
+            j = j - 1;
+        }
+        list.set(j + 1, temp);
+    }
     System.out.println();
     System.out.println("Insertion Sort");
     System.out.println();

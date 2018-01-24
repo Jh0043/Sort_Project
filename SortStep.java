@@ -6,7 +6,7 @@ import java.util.*;
 
 public class SortStep{
   private Scanner console;
-  private ArrayList <Comparable> myArray;
+  private ArrayList <Integer> myArray;
   private Sorts mySorts;
   private String listType;
 
@@ -99,7 +99,7 @@ public class SortStep{
     int largestInt = console.nextInt();
     
     Random randGen = new Random();
-    myArray = new ArrayList <Comparable>();
+    myArray = new ArrayList <Integer>();
 
     for (int loop = 0; loop < numInts; loop++){
       Integer x = new Integer(randGen.nextInt(largestInt) + 1);
