@@ -9,7 +9,7 @@ public class SortStep{
   private ArrayList <Integer> myArray;
   private Sorts mySorts;
   private String listType;
-
+  static int searchNum;
   /**
    *  Constructor for the SortStep object
    */
@@ -64,20 +64,23 @@ public class SortStep{
             case '4':
               resetArray();
               int last = myArray.size() - 1;
-              //mySorts.mergeSort(myArray, 0, last);
+              mySorts.mergeSort(myArray, 0, last);
               break;
             case '5':
-        	  listType = "Integer";
+              listType = "Integer";
               break;              
         }
 
         if ('1' <= choice.charAt(0) && choice.charAt(0) <= '4'){
-        	System.out.println();
-        	System.out.println("Array sorted to:");
-	        screenOutput();
-	        System.out.println();
-	        System.out.println("# steps = " + mySorts.getStepCount());
-	        System.out.println();
+            System.out.println();
+            System.out.println("Array sorted to:");
+            screenOutput();
+            System.out.println();
+            System.out.println("# steps = " + mySorts.getStepCount());
+            System.out.println();
+            System.out.println("# steps of search number = " + mySorts.getStepSearch());
+            System.out.println();
+            System.out.println("Find the number? = " + mySorts.findNumber(searchNum, myArray));
         }
       }
     } while (choice.charAt(0) != 'Q' && choice.charAt(0) != 'q');
@@ -91,13 +94,14 @@ public class SortStep{
    *      myArray)
    * @param  largestInt  largest possible random integer to create
    */
-  private void fillArrayWithInts(){
+  public void fillArrayWithInts(){
     
     System.out.print("How many numbers do you wish to generate? ");
     int numInts = console.nextInt();
     System.out.print("Largest integer to generate? ");
     int largestInt = console.nextInt();
-    
+    System.out.print("What number do you want to search?");
+    int searchNum = console.nextInt();
     Random randGen = new Random();
     myArray = new ArrayList <Integer>();
 
@@ -112,7 +116,7 @@ public class SortStep{
    */
   private void resetArray(){
     if (myArray == null || listType.equals("Integer")){
-    	fillArrayWithInts();
+        fillArrayWithInts();
     }
 
     System.out.println();
