@@ -47,7 +47,7 @@ public class SortStep{
         System.out.println();
 
         mySorts.setStepCount(0);
-
+        
         switch (choice.charAt(0)){
             case '1':
               resetArray();
@@ -70,22 +70,33 @@ public class SortStep{
               listType = "Integer";
               break;              
         }
-
+        mySorts.setStepSearch(0);
+        mySorts.setSelection(0);
         if ('1' <= choice.charAt(0) && choice.charAt(0) <= '4'){
             System.out.println();
             System.out.println("Array sorted to:");
             screenOutput();
+            System.out.println("searching = " + searchNum);
             System.out.println();
             System.out.println("# steps = " + mySorts.getStepCount());
             System.out.println();
-            System.out.println("# steps of search number = " + mySorts.getStepSearch());
+            System.out.println("Find the number in binary? in position = " +
+                mySorts.findNumber(searchNum, myArray, 0, myArray.size()));
             System.out.println();
-            System.out.println("Find the number? = " + mySorts.findNumber(searchNum, myArray));
+            System.out.println("# steps of search binary = " + mySorts.getStepSearch());
+            System.out.println();
+            System.out.println("find number in Selection? = "
+                + mySorts.selection(searchNum, myArray));
+            System.out.println();
+            System.out.println("# steps of selection = " + mySorts.getSelection());
+            System.out.println();
+            
+            
         }
       }
     } while (choice.charAt(0) != 'Q' && choice.charAt(0) != 'q');
   }
-
+  
   /**
    *  Initializes myArray with random integers in the range
    *  1..largestInt
@@ -101,7 +112,7 @@ public class SortStep{
     System.out.print("Largest integer to generate? ");
     int largestInt = console.nextInt();
     System.out.print("What number do you want to search?");
-    int searchNum = console.nextInt();
+    searchNum = console.nextInt();
     Random randGen = new Random();
     myArray = new ArrayList <Integer>();
 

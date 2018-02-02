@@ -4,6 +4,7 @@ import java.util.*;
 public class Sorts{
   private long steps;
   private long stepsOfSearch;
+  private long searchOfSelection;
   /**
    *  Description of Constructor
    *
@@ -12,9 +13,40 @@ public class Sorts{
   public Sorts(){
     steps = 0;
     stepsOfSearch = 0;
-    
+    searchOfSelection = 0;
   }
-  public boolean findNumber(int searchNum, ArrayList <Integer> list){
+  public boolean selection(int searchNum,ArrayList <Integer> list){
+      for(int i = 0; i < list.size(); i++){
+          searchOfSelection++;
+          if(list.get(i) == searchNum) return true;
+        }
+      
+      return false; 
+    }
+  
+  public int findNumber(int searchNum, ArrayList <Integer> list, int min,  int max){
+      if(max < min){
+          return -1;
+        }
+      else{
+          int middle = (max + min) / 2;
+          stepsOfSearch++;
+          if(list.get(middle) > searchNum){
+              stepsOfSearch+=2;
+              return findNumber(searchNum, list, min, middle - 1); 
+            }
+          else if(list.get(middle) < searchNum){
+              stepsOfSearch+=2;
+              return findNumber(searchNum, list, middle + 1, max);
+            }
+          else{
+              return middle;
+            }
+          
+          
+        }
+      
+      /*
       int length = list.size(); 
       int place1 = 0;
       boolean yes = false; 
@@ -42,6 +74,8 @@ public class Sorts{
             } 
         }
       return yes; 
+      */
+     
     }
   /**
    *  Description of the Method
@@ -67,7 +101,7 @@ public class Sorts{
     System.out.println("Bubble Sort");
     System.out.println();
   }
-
+  
   /**
    *  Description of the Method
    *
@@ -177,10 +211,13 @@ public class Sorts{
    *
    */
   public long getStepCount(){
-    return steps;
+      return steps;
   }
   public long getStepSearch(){
       return stepsOfSearch;
+    }
+  public long getSelection(){
+      return searchOfSelection;
     }
 
   /**
@@ -190,10 +227,12 @@ public class Sorts{
    * @param  stepCount   value assigned to steps
    */
   public void setStepCount(long stepCount){
-    steps = stepCount;
+      steps = stepCount;
   }
   public void setStepSearch(long StepSearch){
       stepsOfSearch = StepSearch;
     }
-
+  public void setSelection(long stepSelection){
+      searchOfSelection = stepSelection;
+    }
 }
