@@ -12,11 +12,13 @@ public class Sorts{
   public Sorts(){
     steps = 0;
     stepsOfSearch = 0;
+    
   }
   public boolean findNumber(int searchNum, ArrayList <Integer> list){
       int length = list.size(); 
       int place1 = 0;
       boolean yes = false; 
+      searchNum = SortStep.searchNum;
       if(list.size() == 2){
           for(int j = 0; j < place1; j++){
              if(searchNum == list.get(j)) yes = true;
@@ -26,23 +28,19 @@ public class Sorts{
           place1 = list.get(length / 2);
           if(searchNum < place1){
              for(int i = length; i > place1; i--){
-                 list.remove(list.get(i));
-                 
+                 list.remove(i);
                 }
              return findNumber(searchNum, list);
              // for(int j = 0; j < place1; j++){
              //     if(whatNum == list.get(j)) return true;
             }
-          
           if(searchNum > place1){
              for(int i = 0; i < place1; i++){
-                 list.remove(list.get(i));
+                 list.remove(i);
                 }
              return findNumber(searchNum, list);
             } 
         }
-      
-      
       return yes; 
     }
   /**
@@ -184,6 +182,7 @@ public class Sorts{
   public long getStepSearch(){
       return stepsOfSearch;
     }
+
   /**
    *  Modifier method to set or reset the step count. Usually called
    *  prior to invocation of a sort method.
@@ -196,4 +195,5 @@ public class Sorts{
   public void setStepSearch(long StepSearch){
       stepsOfSearch = StepSearch;
     }
+
 }

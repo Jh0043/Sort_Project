@@ -9,7 +9,7 @@ public class SortStep{
   private ArrayList <Integer> myArray;
   private Sorts mySorts;
   private String listType;
-  public static int searchNum;
+  static int searchNum;
   /**
    *  Constructor for the SortStep object
    */
@@ -80,7 +80,7 @@ public class SortStep{
             System.out.println();
             System.out.println("# steps of search number = " + mySorts.getStepSearch());
             System.out.println();
-            System.out.println("Find the number? = " + findNumber(searchNum, myArray));
+            System.out.println("Find the number? = " + mySorts.findNumber(searchNum, myArray));
         }
       }
     } while (choice.charAt(0) != 'Q' && choice.charAt(0) != 'q');
@@ -94,14 +94,14 @@ public class SortStep{
    *      myArray)
    * @param  largestInt  largest possible random integer to create
    */
-  private void fillArrayWithInts(){
+  public void fillArrayWithInts(){
     
     System.out.print("How many numbers do you wish to generate? ");
     int numInts = console.nextInt();
     System.out.print("Largest integer to generate? ");
     int largestInt = console.nextInt();
     System.out.print("What number do you want to search?");
-     searchNum = console.nextInt();
+    int searchNum = console.nextInt();
     Random randGen = new Random();
     myArray = new ArrayList <Integer>();
 
